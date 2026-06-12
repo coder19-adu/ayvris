@@ -4,7 +4,10 @@ import ContactIcon from "../assets/contact.svg";
 import CartIcon from "../assets/cart.svg";
 import InstagramIcon from "../assets/instagram.svg";
 
-function NavItem({ icon, label, href = "#" }) {
+import BowIcon from "../assets/flo.png";
+import StarIcon from "../assets/star.png";
+
+function NavItem({ icon, label, large = false, href = "#" }) {
   return (
     <a
       href={href}
@@ -19,28 +22,22 @@ function NavItem({ icon, label, href = "#" }) {
         hover:-translate-y-1
       "
     >
-      <img
-        src={icon}
-        alt={label}
-        className="
-          h-9
-          w-9
-          transition-all
-          duration-300
-          group-hover:scale-110
-          group-hover:rotate-6
-        "
-      />
+      <div className="h-7 w-7 flex items-center justify-center">
+        <img
+          src={icon}
+          alt={label}
+          className={`
+            object-contain
+            transition-all
+            duration-300
+            group-hover:scale-110
+            group-hover:rotate-6
+            ${large ? "h-9 w-9" : "h-10 w-10"}
+          `}
+        />
+      </div>
 
-      <span
-        className="
-          mt-1
-          text-[11px]
-          font-medium
-          uppercase
-          tracking-wider
-        "
-      >
+      <span className="mt-1 text-[11px] font-medium uppercase tracking-wider">
         {label}
       </span>
     </a>
@@ -50,60 +47,68 @@ function NavItem({ icon, label, href = "#" }) {
 export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 bg-[#0047ab] shadow-md">
-      <div className="mx-auto max-w-7xl">
 
-        <div className="flex items-center justify-between px-8 py-5">
+      <div className="w-full px-16">
+        
+        <div className="grid grid-cols-3 items-center py-5">
 
-          {/* LEFT NAVIGATION */}
-          <div className="flex items-center gap-10">
-
-            <NavItem
-              icon={ShopIcon}
-              label="Shop"
-            />
-
-            <NavItem
-              icon={AboutIcon}
-              label="About"
-            />
-
-            <NavItem
-              icon={ContactIcon}
-              label="Contact"
-            />
-
+          {/* LEFT NAV */}
+          <div className="flex items-center gap-6 justify-start">
+            <NavItem icon={ShopIcon} label="Shop" />
+            <NavItem icon={AboutIcon} label="About" />
+            <NavItem icon={ContactIcon} label="Contact" />
           </div>
 
-          {/* BRAND NAME */}
-          <div className="flex items-center gap-3">
+          {/* BRAND (CENTER) */}
+          <div className="flex items-center justify-center gap-15 relative">
 
-            <span className="text-lg">🎀</span>
+            {/* LEFT STICKER */}
+            <img
+              src={BowIcon}
+              alt="bow"
+              className="
+                absolute
+                -left-21
+                -top-4
+                h-20 w-20
+                rotate-[-30deg]
+              "
+            />
 
             <h1
               className="
                 select-none
                 text-4xl
                 md:text-5xl
-                font-semibold
-                tracking-[0.25em]
+                font-extrabold
                 text-[#f3e8bf]
+                tracking-[-0.08em]
               "
             >
               AYVRIS
             </h1>
 
-            <span className="text-lg">✨</span>
+            {/* RIGHT STICKER */}
+            <img
+              src={StarIcon}
+              alt="star"
+              className="
+                absolute
+                -right-36
+                -top-7
+                h-28 w-28
+                rotate-[45deg]
+              "
+            />
 
           </div>
 
-          {/* RIGHT NAVIGATION */}
-          <div className="flex items-center gap-8">
+          {/* RIGHT NAV */}
+          <div className="flex items-center gap-6 justify-end">
 
-            <NavItem
-              icon={CartIcon}
-              label="Cart"
-            />
+            <NavItem icon={CartIcon} label="Cart" large />
 
+            {/* Instagram */}
             <a
               href="https://www.instagram.com/wearayvris/"
               target="_blank"
@@ -119,28 +124,22 @@ export default function Navbar() {
                 hover:-translate-y-1
               "
             >
-              <img
-                src={InstagramIcon}
-                alt="Instagram"
-                className="
-                  h-7
-                  w-7
-                  transition-all
-                  duration-300
-                  group-hover:scale-110
-                  group-hover:rotate-6
-                "
-              />
+              <div className="h-7 w-7 flex items-center justify-center">
+                <img
+                  src={InstagramIcon}
+                  alt="Instagram"
+                  className="
+                    h-6 w-6
+                    object-contain
+                    transition-all
+                    duration-300
+                    group-hover:scale-110
+                    group-hover:rotate-6
+                  "
+                />
+              </div>
 
-              <span
-                className="
-                  mt-1
-                  text-[11px]
-                  font-medium
-                  uppercase
-                  tracking-wider
-                "
-              >
+              <span className="mt-1 text-[11px] font-medium uppercase tracking-wider">
                 Insta
               </span>
             </a>
@@ -148,7 +147,6 @@ export default function Navbar() {
           </div>
 
         </div>
-
       </div>
     </nav>
   );
