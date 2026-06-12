@@ -1,37 +1,151 @@
-import { ShoppingCart } from "lucide-react";
-import { FaInstagram } from "react-icons/fa";
+import ShopIcon from "../assets/bag.svg";
+import AboutIcon from "../assets/about.svg";
+import ContactIcon from "../assets/contact.svg";
+import CartIcon from "../assets/cart.svg";
+import InstagramIcon from "../assets/instagram.svg";
+
+function NavItem({ icon, label, href = "#" }) {
+  return (
+    <a
+      href={href}
+      className="
+        group
+        flex
+        flex-col
+        items-center
+        text-[#f3e8bf]
+        transition-all
+        duration-300
+        hover:-translate-y-1
+      "
+    >
+      <img
+        src={icon}
+        alt={label}
+        className="
+          h-9
+          w-9
+          transition-all
+          duration-300
+          group-hover:scale-110
+          group-hover:rotate-6
+        "
+      />
+
+      <span
+        className="
+          mt-1
+          text-[11px]
+          font-medium
+          uppercase
+          tracking-wider
+        "
+      >
+        {label}
+      </span>
+    </a>
+  );
+}
 
 export default function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 w-full bg-[#0047ab]">
-      
-      <div className="flex items-center justify-between px-6 py-4">
+    <nav className="sticky top-0 z-50 bg-[#0047ab] shadow-md">
+      <div className="mx-auto max-w-7xl">
 
-        {/* LEFT */}
-        <div className="flex gap-6 text-sm uppercase tracking-wide text-white">
-          <a href="#">Shop</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
-        </div>
+        <div className="flex items-center justify-between px-8 py-5">
 
-        {/* CENTER */}
-        <div className="text-xl font-semibold tracking-[0.3em] text-[#f3e8bf]">
-          AYVRIS
-        </div>
+          {/* LEFT NAVIGATION */}
+          <div className="flex items-center gap-10">
 
-        {/* RIGHT */}
-        <div className="flex items-center gap-5 text-white">
+            <NavItem
+              icon={ShopIcon}
+              label="Shop"
+            />
 
-          <ShoppingCart size={20} />
+            <NavItem
+              icon={AboutIcon}
+              label="About"
+            />
 
-          <a
-            href="https://www.instagram.com/wearayvris"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:opacity-70 transition"
-          >
-            <FaInstagram size={18} />
-          </a>
+            <NavItem
+              icon={ContactIcon}
+              label="Contact"
+            />
+
+          </div>
+
+          {/* BRAND NAME */}
+          <div className="flex items-center gap-3">
+
+            <span className="text-lg">🎀</span>
+
+            <h1
+              className="
+                select-none
+                text-4xl
+                md:text-5xl
+                font-semibold
+                tracking-[0.25em]
+                text-[#f3e8bf]
+              "
+            >
+              AYVRIS
+            </h1>
+
+            <span className="text-lg">✨</span>
+
+          </div>
+
+          {/* RIGHT NAVIGATION */}
+          <div className="flex items-center gap-8">
+
+            <NavItem
+              icon={CartIcon}
+              label="Cart"
+            />
+
+            <a
+              href="https://www.instagram.com/wearayvris/"
+              target="_blank"
+              rel="noreferrer"
+              className="
+                group
+                flex
+                flex-col
+                items-center
+                text-[#f3e8bf]
+                transition-all
+                duration-300
+                hover:-translate-y-1
+              "
+            >
+              <img
+                src={InstagramIcon}
+                alt="Instagram"
+                className="
+                  h-7
+                  w-7
+                  transition-all
+                  duration-300
+                  group-hover:scale-110
+                  group-hover:rotate-6
+                "
+              />
+
+              <span
+                className="
+                  mt-1
+                  text-[11px]
+                  font-medium
+                  uppercase
+                  tracking-wider
+                "
+              >
+                Insta
+              </span>
+            </a>
+
+          </div>
 
         </div>
 
