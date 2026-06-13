@@ -1,0 +1,13 @@
+@keyframes paper {
+  from {
+    transform: scale(0.98);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.animate-paper {
+  animation: paper 0.25s ease-out;
+}
