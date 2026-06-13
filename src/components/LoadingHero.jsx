@@ -31,14 +31,14 @@ export default function LoadingHero() {
     });
 
     const timers = [
-      setTimeout(() => setStage(1), 350),
-      setTimeout(() => setStage(2), 700),
-      setTimeout(() => setStage(3), 1050),
-      setTimeout(() => setStage(4), 1400),
+      setTimeout(() => setStage(1), 300),
+      setTimeout(() => setStage(2), 650),
+      setTimeout(() => setStage(3), 900),
+      setTimeout(() => setStage(4), 1100),
 
       setTimeout(() => {
         setShowHero(true);
-      }, 1900),
+      }, 1700),
     ];
 
     return () => timers.forEach(clearTimeout);
