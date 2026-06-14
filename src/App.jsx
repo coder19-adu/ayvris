@@ -1,7 +1,13 @@
 import LoadingHero from "./components/LoadingHero";
+import CursorGlitter from "./components/CursorGlitter";
 
 function App() {
-  return <LoadingHero />;
+  return (
+    <>
+      <CursorGlitter />
+      <LoadingHero />
+    </>
+  );
 }
 
 export default App;
