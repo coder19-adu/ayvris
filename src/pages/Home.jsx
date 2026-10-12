@@ -52,17 +52,17 @@ export default function Home() {
         {/* Overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/15 to-transparent" />
 
-        {/* Shop button */}
-        <div className="absolute left-1/2 top-[58%] z-20 -translate-x-1/2 -translate-y-1/2">
-          <Link
-            to="/catalog"
-            className="relative inline-block cursor-pointer bg-brand px-6 py-3 text-sm font-semibold text-cream transition-opacity hover:opacity-90 md:px-7 md:py-3.5 md:text-base"
-          >
-            Shop
-          </Link>
-        </div>
+{/* Shop button */}
+<div className="absolute left-1/2 top-[58%] z-20 -translate-x-1/2 -translate-y-1/2">
+  <Link
+    to="/catalog"
+    className="relative inline-block cursor-pointer rounded-full bg-brand px-6 py-3 text-sm font-semibold text-cream transition-opacity hover:opacity-90 md:px-7 md:py-3.5 md:text-base"
+  >
+    Shop
+  </Link>
+</div>
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-3 pb-16 pt-24 md:px-5 md:pb-10">
+<div className="relative z-10 mx-auto w-full max-w-7xl px-3 pb-16 pt-24 md:px-5 md:pb-10">
           {/* Responsive AYVRIS wordmark */}
           <motion.h1
             aria-label="AYVRIS"
