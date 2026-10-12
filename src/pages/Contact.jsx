@@ -22,7 +22,7 @@ export default function Contact() {
           Contact
         </h1>
         <p className="mt-6 max-w-sm text-lg leading-relaxed">
-          Questions about an order, sizing or wholesale? Send us a message and we'll reply by email.
+          Questions about your order or sizing? Send us an email or dm on instagram!
         </p>
         <dl className="mt-8 space-y-4">
           <div>
