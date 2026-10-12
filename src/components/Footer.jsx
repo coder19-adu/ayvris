@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import {
   CONTACT_EMAIL,
@@ -107,11 +106,11 @@ export default function Footer() {
               type="email"
               placeholder="Your email address"
               required
-              className="w-full min-w-0 border border-cream/40 bg-transparent px-3 py-3 text-sm text-cream outline-none placeholder:text-cream/60 focus:border-cream"
+              className="w-full min-w-0 rounded-full border border-cream/40 bg-transparent px-3 py-3 text-sm text-cream outline-none placeholder:text-cream/60 focus:border-cream"
             />
             <button
               type="submit"
-              className="w-full border border-cream bg-cream px-4 py-3 text-sm font-semibold text-brand transition-colors hover:bg-transparent hover:text-cream"
+              className="w-full rounded-full border border-cream bg-cream px-4 py-3 text-sm font-semibold text-brand transition-colors hover:bg-transparent hover:text-cream"
             >
               Join the List
             </button>

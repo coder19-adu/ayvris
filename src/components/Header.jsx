@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { BRAND, INSTAGRAM_URL } from "../lib/config";
 
@@ -11,21 +11,23 @@ const links = [
 ];
 
 const linkClass = ({ isActive }) =>
-  `py-1 font-medium transition-colors border-b-2 ${
+  `rounded-full px-3 py-2 font-medium transition-colors duration-200 ${
     isActive
-      ? "border-brand text-brand"
-      : "border-transparent hover:text-brand"
+      ? "bg-brand/10 text-brand"
+      : "text-brand/80 hover:bg-brand/5 hover:text-brand"
   }`;
 
 export default function Header() {
   const [menu, setMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { count, openCart } = useCart();
+  const { pathname } = useLocation();
+
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
-      
-setScrolled(window.scrollY > window.innerHeight * 0.75);
+      setScrolled(window.scrollY > window.innerHeight * 0.75);
     };
 
     handleScroll();
@@ -34,54 +36,70 @@ setScrolled(window.scrollY > window.innerHeight * 0.75);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const showBrand = !isHomePage || scrolled;
+
   return (
     <header className="sticky top-0 z-40 border-b border-brand/15 bg-page/90 backdrop-blur">
-      <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
-
-        {/* Center: AYVRIS appears when scrolling */}
+      <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-3 sm:px-5">
+        {/* Center: animated on Home, always visible on other pages */}
         <Link
           to="/"
           onClick={() => setMenu(false)}
           aria-label="AYVRIS home"
-          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-2xl font-extrabold tracking-tight text-brand transition-[opacity,transform] duration-500 ease-in-out ${
-            scrolled
-  ? "opacity-100 scale-100"
-  : "pointer-events-none opacity-0 scale-95"
+          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-display text-lg font-extrabold tracking-tight text-brand transition-[opacity,transform] duration-500 ease-in-out sm:text-2xl ${
+            showBrand
+              ? "scale-100 opacity-100"
+              : "pointer-events-none scale-95 opacity-0"
           }`}
-          tabIndex={scrolled ? 0 : -1}
+          tabIndex={showBrand ? 0 : -1}
         >
           {BRAND}
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
+        {/* Desktop Navigation */}
+        <nav
+          aria-label="Main"
+          className="hidden items-center gap-3 md:flex"
+        >
           {links.map((l) => (
-            <NavLink key={l.to} to={l.to} end={l.end} className={linkClass}>
+            <NavLink
+              key={l.to}
+              to={l.to}
+              end={l.end}
+              className={linkClass}
+            >
               {l.label}
             </NavLink>
           ))}
+
           <a
             href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="border-b-2 border-transparent py-1 font-medium transition-colors hover:text-brand"
+            className="rounded-full px-3 py-2 font-medium text-brand/80 transition-colors duration-200 hover:bg-brand/5 hover:text-brand"
           >
             Instagram
           </a>
         </nav>
 
-        <div className="flex items-center gap-1.5">
+        {/* Cart and Mobile Menu */}
+        <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
           <button
+            type="button"
             onClick={openCart}
-            className="flex h-8 items-center gap-1.5 bg-brand px-2.5 text-sm font-semibold text-cream"
+            aria-label={`Open cart, ${count} items`}
+            className="flex h-8 items-center gap-1.5 rounded-full bg-brand px-2.5 text-xs font-semibold text-cream transition-all duration-200 hover:bg-brand/85 sm:h-10 sm:gap-2 sm:px-4 sm:text-sm"
           >
             Cart
-            <span className="min-w-4 bg-cream px-1 text-center text-xs font-bold text-brand">
+
+            <span className="flex min-h-4 min-w-4 items-center justify-center rounded-full bg-cream px-1 text-[10px] font-bold text-brand sm:min-h-5 sm:min-w-5 sm:text-xs">
               {count}
             </span>
           </button>
 
           <button
-            className="h-8 border border-brand px-2 text-sm font-medium text-brand md:hidden"
+            type="button"
+            className="flex h-8 items-center justify-center rounded-full border border-brand/30 px-2.5 text-xs font-medium text-brand transition-all duration-200 hover:bg-brand hover:text-cream sm:h-10 sm:px-4 sm:text-sm md:hidden"
             aria-expanded={menu}
             aria-controls="mobile-nav"
             onClick={() => setMenu((m) => !m)}
@@ -91,13 +109,14 @@ setScrolled(window.scrollY > window.innerHeight * 0.75);
         </div>
       </div>
 
+      {/* Mobile Navigation */}
       {menu && (
         <nav
           id="mobile-nav"
           aria-label="Mobile"
           className="border-t border-brand/15 bg-page px-5 pb-4 md:hidden"
         >
-          <ul className="divide-y divide-brand/10 font-display text-2xl font-bold">
+          <ul className="space-y-1 pt-3 font-display text-xl font-bold">
             {links.map((l) => (
               <li key={l.to}>
                 <NavLink
@@ -105,19 +124,24 @@ setScrolled(window.scrollY > window.innerHeight * 0.75);
                   end={l.end}
                   onClick={() => setMenu(false)}
                   className={({ isActive }) =>
-                    `block py-3 ${isActive ? "text-brand" : ""}`
+                    `block rounded-xl px-4 py-3 transition-colors duration-200 ${
+                      isActive
+                        ? "bg-brand/10 text-brand"
+                        : "hover:bg-brand/5"
+                    }`
                   }
                 >
                   {l.label}
                 </NavLink>
               </li>
             ))}
+
             <li>
               <a
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block py-3"
+                className="block rounded-xl px-4 py-3 transition-colors duration-200 hover:bg-brand/5"
               >
                 Instagram
               </a>

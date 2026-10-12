@@ -1,23 +1,27 @@
 import { useState } from "react";
 import ProductImage from "./ProductImage";
-import { useCart } from "../context/CartContext";
+import QuickAddModal from "./QuickAddModal";
 import { formatPrice } from "../lib/format";
 import { Link } from "react-router-dom";
 
 export default function ProductCard({ product }) {
-  const { add } = useCart();
-  const [size, setSize] = useState(product.sizes.length > 1 ? "M" : product.sizes[0]);
+  const [quickAddOpen, setQuickAddOpen] = useState(false);
 
   return (
-    <article className="flex flex-col transition-transform duration-300 ease-out hover:-translate-y-1">
-      <Link to={`/product/${product.id}`} className="group block">
-        <div className="relative aspect-[4/5] overflow-hidden bg-card p-6">
+    <>
+      <article className="group flex flex-col">
+        {/* Product image */}
+        <Link
+          to={`/product/${product.id}`}
+          className="group/image relative block overflow-hidden rounded-2xl bg-card p-4 sm:p-5"
+        >
           {product.isNew && (
-            <span className="absolute left-3 top-3 z-10 bg-brand px-2 py-1 text-xs font-semibold text-cream">
+            <span className="absolute left-3 top-3 z-10 rounded-full bg-brand px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-cream">
               New
             </span>
           )}
-          <div className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-105">
+
+          <div className="mx-auto aspect-[4/5] w-[92%] transition-transform duration-500 ease-out group-hover/image:scale-105">
             <ProductImage
               type={product.type}
               image={product.image}
@@ -25,42 +29,56 @@ export default function ProductCard({ product }) {
               label={product.name}
             />
           </div>
-        </div>
+        </Link>
 
-        <div className="mt-3 flex items-baseline justify-between gap-3">
-          <h3 className="font-display text-lg font-bold leading-tight group-hover:underline">
-            {product.name}
-          </h3>
-          <p className="shrink-0 font-semibold text-brand">
-            {formatPrice(product.price)}
-          </p>
-        </div>
-      </Link>
+        {/* Product name, price and quick-add */}
+        <div className="mt-3 flex items-start justify-between gap-3">
+          <Link
+            to={`/product/${product.id}`}
+            className="min-w-0 flex-1"
+          >
+            <h3 className="font-display text-sm font-semibold leading-snug transition-opacity duration-200 group-hover:opacity-70 sm:text-base">
+              {product.name}
+            </h3>
 
-      {product.sizes.length > 1 && (
-        <div className="mt-3 flex gap-1.5" role="radiogroup" aria-label={`Size for ${product.name}`}>
-          {product.sizes.map((s) => (
-            <button
-              key={s}
-              role="radio"
-              aria-checked={size === s}
-              onClick={() => setSize(s)}
-              className={`h-9 min-w-9 border px-2 text-sm font-medium transition-colors ${
-                size === s ? "border-brand bg-brand text-cream" : "border-brand/30 hover:border-brand"
-              }`}
+            <p className="mt-1 text-sm text-brand/80">
+              {formatPrice(product.price)}
+            </p>
+          </Link>
+
+          <button
+            type="button"
+            onClick={() => setQuickAddOpen(true)}
+            aria-label={`Quick add ${product.name} to cart`}
+            title="Quick add"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-brand/30 text-brand transition-all duration-200 hover:border-brand hover:bg-brand hover:text-cream"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
             >
-              {s}
-            </button>
-          ))}
+              <path d="M12 5v14" />
+              <path d="M5 12h14" />
+            </svg>
+          </button>
         </div>
-      )}
+      </article>
 
-      <button
-        onClick={() => add(product.id, size)}
-        className="mt-3 border border-brand py-2.5 font-semibold text-brand transition-colors hover:bg-brand hover:text-cream"
-      >
-        Add to cart
-      </button>
-    </article>
+      {/* Quick-add modal */}
+      {quickAddOpen && (
+        <QuickAddModal
+          product={product}
+          onClose={() => setQuickAddOpen(false)}
+        />
+      )}
+    </>
   );
 }

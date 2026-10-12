@@ -31,11 +31,14 @@ export default function About() {
             <p>
               Each piece is cut to be worn on its own or layered with the rest. Replace this text with your real story: who you are, where you make your clothes and what you care about.
             </p>
-            <div>
-              <Link to="/catalog" className="inline-block bg-brand px-6 py-3 font-semibold text-cream transition-opacity hover:opacity-90">
-                Shop the catalog
-              </Link>
-            </div>
+<div>
+  <Link
+    to="/catalog"
+    className="inline-block rounded-full bg-brand px-6 py-3 font-semibold text-cream transition-opacity hover:opacity-90"
+  >
+    Shop the catalog
+  </Link>
+</div>
           </div>
         </div>
       </section>

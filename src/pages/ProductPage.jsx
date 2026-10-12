@@ -28,7 +28,7 @@ export default function ProductPage() {
         </h1>
         <Link
           to="/catalog"
-          className="mt-6 inline-block bg-brand px-6 py-3 font-semibold text-cream"
+          className="mt-6 inline-block rounded-full bg-brand px-6 py-3 font-semibold text-cream"
         >
           Back to Shop
         </Link>
@@ -41,7 +41,7 @@ export default function ProductPage() {
       <section className="mx-auto max-w-7xl px-5 py-10 md:py-16">
         <Link
           to="/catalog"
-          className="mb-8 inline-block text-sm font-medium text-brand hover:underline"
+          className="mb-8 inline-block rounded-full text-sm font-medium text-brand hover:underline"
         >
           ← Back to Shop
         </Link>
@@ -89,7 +89,7 @@ export default function ProductPage() {
                     type="button"
                     onClick={() => setSize(s)}
                     aria-pressed={size === s}
-                    className={`min-w-12 border px-4 py-3 text-sm font-medium transition-colors ${
+                    className={`min-w-12 rounded-full border px-4 py-3 text-sm font-medium transition-colors ${
                       size === s
                         ? "border-brand bg-brand text-cream"
                         : "border-brand/30 text-brand hover:border-brand"
@@ -105,7 +105,7 @@ export default function ProductPage() {
             <div className="mt-6">
               <p className="mb-3 text-sm font-semibold">Quantity</p>
 
-              <div className="flex items-center border border-brand/30">
+              <div className="flex items-center overflow-hidden rounded-full border border-brand/30">
                 <button
                   type="button"
                   onClick={() => setQuantity((q) => Math.max(1, q - 1))}
@@ -138,7 +138,7 @@ export default function ProductPage() {
                   add(product.id, size);
                 }
               }}
-              className="mt-8 w-full bg-brand px-6 py-4 font-semibold text-cream transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+              className="mt-8 w-full rounded-full bg-brand px-6 py-4 font-semibold text-cream transition-all duration-300 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
             >
               Add to Cart
             </button>

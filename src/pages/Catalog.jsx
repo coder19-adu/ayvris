@@ -27,7 +27,9 @@ export default function Catalog() {
 
   return (
     <div className="mx-auto max-w-7xl px-5 py-12">
-      <h1 className="font-display text-5xl font-extrabold text-brand md:text-7xl">Catalog</h1>
+      <h1 className="font-display text-5xl font-extrabold text-brand md:text-7xl">
+        Catalog
+      </h1>
 
       <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-y border-brand/15 py-4">
         <div className="flex flex-wrap gap-2">
@@ -36,17 +38,24 @@ export default function Catalog() {
               key={c}
               aria-pressed={active === c}
               onClick={() => choose(c)}
-              className={`border px-4 py-2 font-medium transition-colors ${
-                active === c ? "border-brand bg-brand text-cream" : "border-brand/30 hover:border-brand"
+              className={`rounded-full border px-4 py-2 font-medium transition-colors ${
+                active === c
+                  ? "border-brand bg-brand text-cream"
+                  : "border-brand/30 hover:border-brand"
               }`}
             >
               {c}
             </button>
           ))}
         </div>
+
         <label className="flex items-center gap-2 text-sm font-medium">
           Sort by
-          <select value={sort} onChange={(e) => setSort(e.target.value)} className="border border-brand/30 bg-card px-3 py-2">
+          <select
+            value={sort}
+            onChange={(e) => setSort(e.target.value)}
+            className="rounded-full border border-brand/30 bg-card px-3 py-2"
+          >
             {Object.entries(SORTS).map(([k, s]) => (
               <option key={k} value={k}>
                 {s.label}
