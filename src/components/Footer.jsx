@@ -8,7 +8,7 @@ import {
 export default function Footer() {
   return (
     <footer className="on-blue bg-brand text-cream">
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-5 py-12 sm:grid-cols-2 md:grid-cols-4 md:gap-8 md:px-8 md:py-14">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-5 py-12 sm:grid-cols-2 md:grid-cols-3 md:gap-8 md:px-8 md:py-14">
 
         {/* Links */}
         <nav aria-label="Footer" className="min-w-0">
@@ -34,30 +34,6 @@ export default function Footer() {
           </ul>
         </nav>
 
-        {/* Contact */}
-        <div className="min-w-0">
-          <h2 className="mb-4 font-display text-xl font-bold">
-            Get in Touch
-          </h2>
-          <p className="break-words text-cream/80">
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="transition-opacity hover:opacity-75"
-            >
-              {CONTACT_EMAIL}
-            </a>
-          </p>
-          <p className="mt-3 break-words text-cream/80">
-            <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-opacity hover:opacity-75"
-            >
-              {INSTAGRAM_HANDLE}
-            </a>
-          </p>
-        </div>
 
         {/* Policies */}
         <nav aria-label="Policies" className="min-w-0">
