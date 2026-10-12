@@ -10,6 +10,8 @@ import Catalog from "./pages/Catalog";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import ProductPage from "./pages/ProductPage";
+import RefundPolicy from "./pages/RefundPolicy";
+import ShippingPolicy from "./pages/ShippingPolicy";
 
 
 
@@ -27,6 +29,8 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Home />} />
           <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/refund-policy" element={<RefundPolicy />} />
+          <Route path="/shipping-policy" element={<ShippingPolicy />} />
         </Routes>
       </main>
 

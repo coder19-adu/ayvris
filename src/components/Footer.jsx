@@ -1,6 +1,6 @@
+
 import { Link } from "react-router-dom";
 import {
-  BRAND,
   CONTACT_EMAIL,
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
@@ -9,60 +9,90 @@ import {
 export default function Footer() {
   return (
     <footer className="on-blue bg-brand text-cream">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-4">
-        <div>
-          <p className="font-display text-3xl font-extrabold">{BRAND}</p>
-          <p className="mt-3 max-w-xs text-cream/80">
-            Everyday clothing in blue and cream.
-          </p>
-        </div>
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-5 py-12 sm:grid-cols-2 md:grid-cols-4 md:gap-8 md:px-8 md:py-14">
 
-        <nav aria-label="Footer">
-          <ul className="space-y-2 font-medium">
+        {/* Links */}
+        <nav aria-label="Footer" className="min-w-0">
+          <h2 className="mb-4 font-display text-xl font-bold">
+            Explore
+          </h2>
+          <ul className="space-y-3 font-medium">
             <li>
-              <Link to="/catalog" className="hover:underline">
+              <Link to="/catalog" className="transition-opacity hover:opacity-75">
                 Catalog
               </Link>
             </li>
             <li>
-              <Link to="/about" className="hover:underline">
+              <Link to="/about" className="transition-opacity hover:opacity-75">
                 About us
               </Link>
             </li>
             <li>
-              <Link to="/contact" className="hover:underline">
+              <Link to="/contact" className="transition-opacity hover:opacity-75">
                 Contact
               </Link>
             </li>
           </ul>
         </nav>
 
-        <div className="text-cream/80">
-          <p>
-            <a href={`mailto:${CONTACT_EMAIL}`} className="hover:underline">
+        {/* Contact */}
+        <div className="min-w-0">
+          <h2 className="mb-4 font-display text-xl font-bold">
+            Get in Touch
+          </h2>
+          <p className="break-words text-cream/80">
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="transition-opacity hover:opacity-75"
+            >
               {CONTACT_EMAIL}
             </a>
           </p>
-
-          <p className="mt-1">
+          <p className="mt-3 break-words text-cream/80">
             <a
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:underline"
+              className="transition-opacity hover:opacity-75"
             >
               {INSTAGRAM_HANDLE}
             </a>
           </p>
         </div>
 
+        {/* Policies */}
+        <nav aria-label="Policies" className="min-w-0">
+          <h2 className="mb-4 font-display text-xl font-bold">
+            Policies
+          </h2>
+          <ul className="space-y-3 font-medium">
+            <li>
+              <Link
+                to="/refund-policy"
+                className="transition-opacity hover:opacity-75"
+              >
+                Refund Policy
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/shipping-policy"
+                className="transition-opacity hover:opacity-75"
+              >
+                Shipping Policy
+              </Link>
+            </li>
+          </ul>
+        </nav>
+
         {/* Stay Updated */}
-        <div>
+        <div className="min-w-0">
           <h2 className="font-display text-xl font-bold">
             Stay Updated
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-cream/80">
-            subscribe to stay updated with exclusive deals and early access to new products.
+            Subscribe to stay updated with exclusive deals and early access
+            to new products.
           </p>
 
           <form
@@ -72,18 +102,16 @@ export default function Footer() {
             <label htmlFor="footer-email" className="sr-only">
               Your email address
             </label>
-
             <input
               id="footer-email"
               type="email"
               placeholder="Your email address"
               required
-              className="w-full border border-cream/40 bg-transparent px-3 py-3 text-sm text-cream outline-none placeholder:text-cream/60 focus:border-cream"
+              className="w-full min-w-0 border border-cream/40 bg-transparent px-3 py-3 text-sm text-cream outline-none placeholder:text-cream/60 focus:border-cream"
             />
-
             <button
               type="submit"
-              className="border border-cream bg-cream px-4 py-3 text-sm font-semibold text-brand transition-colors hover:bg-transparent hover:text-cream"
+              className="w-full border border-cream bg-cream px-4 py-3 text-sm font-semibold text-brand transition-colors hover:bg-transparent hover:text-cream"
             >
               Join the List
             </button>
@@ -91,8 +119,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-cream/20 py-4 text-center text-sm text-cream/70">
-        © {new Date().getFullYear()} {BRAND}. All rights reserved.
+      <div className="border-t border-cream/20 px-5 py-4 text-center text-sm text-cream/70">
+        © {new Date().getFullYear()} All rights reserved.
       </div>
     </footer>
   );

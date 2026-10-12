@@ -24,7 +24,8 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > window.innerHeight * 0.65);
+      
+setScrolled(window.scrollY > window.innerHeight * 0.75);
     };
 
     handleScroll();
@@ -42,10 +43,10 @@ export default function Header() {
           to="/"
           onClick={() => setMenu(false)}
           aria-label="AYVRIS home"
-          className={`absolute left-1/2 -translate-x-1/2 font-display text-2xl font-extrabold tracking-tight text-brand transition-all duration-300 ${
+          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-2xl font-extrabold tracking-tight text-brand transition-[opacity,transform] duration-500 ease-in-out ${
             scrolled
-              ? "translate-y-0 opacity-100"
-              : "pointer-events-none -translate-y-2 opacity-0"
+  ? "opacity-100 scale-100"
+  : "pointer-events-none opacity-0 scale-95"
           }`}
           tabIndex={scrolled ? 0 : -1}
         >
@@ -68,19 +69,19 @@ export default function Header() {
           </a>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
           <button
             onClick={openCart}
-            className="flex h-10 items-center gap-2 bg-brand px-4 font-semibold text-cream"
+            className="flex h-8 items-center gap-1.5 bg-brand px-2.5 text-sm font-semibold text-cream"
           >
             Cart
-            <span className="min-w-5 bg-cream px-1.5 text-center text-sm font-bold text-brand">
+            <span className="min-w-4 bg-cream px-1 text-center text-xs font-bold text-brand">
               {count}
             </span>
           </button>
 
           <button
-            className="h-10 border border-brand px-3 font-medium text-brand md:hidden"
+            className="h-8 border border-brand px-2 text-sm font-medium text-brand md:hidden"
             aria-expanded={menu}
             aria-controls="mobile-nav"
             onClick={() => setMenu((m) => !m)}

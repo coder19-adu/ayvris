@@ -4,10 +4,14 @@ import ProductCard from "../components/ProductCard";
 import ProductImage from "../components/ProductImage";
 import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "../lib/config";
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+} from "framer-motion";
 
 const LETTERS = "AYVRIS".split("");
-const heroProduct = products.find((p) => p.id === "mother");
 
 export default function Home() {
   const newIn = products.filter((p) => p.isNew).slice(0, 4);
@@ -20,9 +24,16 @@ export default function Home() {
     offset: ["start start", "end start"],
   });
 
-  const logoScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.18]);
-  const logoY = useTransform(scrollYProgress, [0, 0.45], [0, -180]);
-  const logoOpacity = useTransform(scrollYProgress, [0, 0.45], [1, 1]);
+  // Smoother scroll-linked animation
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 25,
+    mass: 0.3,
+  });
+
+  const logoScale = useTransform(smoothProgress, [0, 0.45], [1, 0.18]);
+  const logoY = useTransform(smoothProgress, [0, 0.45], [0, -180]);
+  const logoOpacity = useTransform(smoothProgress, [0, 0.45], [1, 1]);
 
   return (
     <>
@@ -34,44 +45,34 @@ export default function Home() {
         {/* Full-screen hero image */}
         <img
           src="/products/bhavya1.jpeg"
-          alt={heroProduct?.name || "AYVRIS collection"}
+          alt="AYVRIS collection"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
 
         {/* Overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/15 to-transparent" />
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-8 pt-24 md:pb-10">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <p className="max-w-sm font-display text-xl font-bold leading-snug md:text-2xl">
-            </p>
+        {/* Shop button */}
+        <div className="absolute left-1/2 top-[58%] z-20 -translate-x-1/2 -translate-y-1/2">
+          <Link
+            to="/catalog"
+            className="relative inline-block cursor-pointer bg-brand px-6 py-3 text-sm font-semibold text-cream transition-opacity hover:opacity-90 md:px-7 md:py-3.5 md:text-base"
+          >
+            Shop
+          </Link>
+        </div>
 
-            <div className="flex flex-wrap gap-3">
-              <Link
-                to="/catalog"
-                className="bg-brand px-6 py-3 font-semibold text-cream transition-opacity hover:opacity-90"
-              >
-                Shop the catalog
-              </Link>
-
-              <Link
-                to="/about"
-                className="border border-brand bg-card/70 px-6 py-3 font-semibold text-brand transition-colors hover:bg-brand hover:text-cream"
-              >
-                About us
-              </Link>
-            </div>
-          </div>
-
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-3 pb-16 pt-24 md:px-5 md:pb-10">
           {/* Responsive AYVRIS wordmark */}
           <motion.h1
             aria-label="AYVRIS"
-            className="mt-8 flex w-full select-none items-center justify-between gap-1 font-display font-extrabold leading-none tracking-tighter text-brand"
+            className="mt-0 flex w-full select-none items-center justify-center whitespace-nowrap font-display font-black leading-none tracking-[-0,03em] text-brand"
             style={{
-              fontSize: "clamp(2.8rem, 15vw, 13rem)",
+              fontSize: "clamp(7.8rem, 16vw, 12rem)",
               scale: logoScale,
               y: logoY,
               opacity: logoOpacity,
+              transformOrigin: "center bottom",
             }}
           >
             {LETTERS.map((l, i) => (
@@ -160,7 +161,7 @@ export default function Home() {
             ]
               .filter(Boolean)
               .map((p) => (
-                <div key={p.id} className="aspect-squar bg-card p-8">
+                <div key={p.id} className="aspect-square bg-card p-8">
                   <ProductImage
                     type={p.type}
                     image={p.image}
@@ -172,6 +173,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-</>
+    </>
   );
 }
