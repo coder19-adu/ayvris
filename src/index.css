@@ -53,3 +53,22 @@
     animation: none;
   }
 }
+@keyframes ayvris-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ayvris-marquee {
+  animation: ayvris-marquee 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ayvris-marquee {
+    animation: none;
+  }
+}

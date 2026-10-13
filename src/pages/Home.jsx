@@ -110,29 +110,92 @@ export default function Home() {
         </div>
       </section>
 
+      
       {/* Categories */}
-      <section className="on-blue bg-brand text-cream">
+      <section className="bg-cream">
         <div className="mx-auto max-w-7xl px-5 py-16">
-          <h2 className="font-display text-3xl font-bold md:text-4xl">
-            Shop by category
-          </h2>
-          <ul className="mt-8 divide-y divide-cream/25 border-y border-cream/25">
-            {categories.map((c) => (
-              <li key={c}>
-                <Link
-                  to={`/catalog?category=${encodeURIComponent(c)}`}
-                  className="flex items-baseline justify-between py-5 font-display text-4xl font-extrabold transition-all hover:pl-4 md:text-7xl"
-                >
-                  {c}
-                  <span className="font-sans text-base font-medium text-cream/80">
-                    {products.filter((p) => p.category === c).length} items
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className="mb-8 flex items-end justify-between gap-4">
+            
+          </div>
+
+          <div className="mx-auto grid w-full max-w-2xl grid-cols-2 gap-4 md:gap-8">
+            {/* Dresses */}
+            <Link
+              to={`/catalog?category=${encodeURIComponent("Dresses")}`}
+              className="group relative mx-auto block w-full max-w-[240px] overflow-hidden rounded-[1.25rem] shadow-lg md:max-w-[280px] md:rounded-[1.5rem]"
+            >
+              <img
+                src="/products/nishi.jpeg"
+                alt="Shop dresses"
+                className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-cream md:bottom-6 md:left-6">
+                <h3 className="font-display text-2xl font-bold md:text-4xl">
+                Dresses
+                </h3>
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-brand transition-transform duration-300 group-hover:translate-x-1 md:h-11 md:w-11">
+                  ↗
+                </span>
+              </div>
+            </Link>
+
+            {/* Tops */}
+            <Link
+              to={`/catalog?category=${encodeURIComponent("Tops")}`}
+              className="group relative mx-auto block w-full max-w-[240px] overflow-hidden rounded-[1.25rem] shadow-lg md:max-w-[280px] md:rounded-[1.5rem]"
+            >
+              <img
+                src="/products/mirror.jpeg"
+                alt="Shop tops"
+                className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-cream md:bottom-6 md:left-6">
+                <h3 className="font-display text-2xl font-bold md:text-4xl">
+                  Tops
+                </h3>
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-brand transition-transform duration-300 group-hover:translate-x-1 md:h-11 md:w-11">
+                  ↗
+                </span>
+              </div>
+            </Link>
+          </div>
         </div>
       </section>
+
+{/* AYVRIS moving fashion ticker */}
+<section
+  className="relative w-full overflow-hidden border-y border-cream/30 bg-brand py-4 md:py-5"
+  aria-label="AYVRIS fashion highlights"
+>
+  <div className="flex w-max animate-ayvris-marquee motion-reduce:animate-none">
+    {[0, 1].map((copy) => (
+      <div
+        key={copy}
+        className="flex shrink-0 items-center"
+        aria-hidden={copy === 1 ? "true" : undefined}
+      >
+        {[
+          "YOUR PINTEREST BOARD, BUT WEARABLE",
+          "CUTE FITS, NO PLANS",
+          "YOUR NEXT OUTFIT OBSESSION",
+          "A LITTLE EXTRA, ALWAYS",
+        ].map((phrase) => (
+          <span
+            key={phrase}
+            className="flex items-center gap-6 px-5 font-display text-sm font-bold uppercase tracking-[0.12em] text-cream md:gap-8 md:px-8 md:text-lg"
+          >
+            {phrase}
+            <span className="text-xl font-normal" aria-hidden="true">
+              ✳
+            </span>
+          </span>
+        ))}
+      </div>
+    ))}
+  </div>
+</section> 
 
       {/* Story */}
       <section className="bg-cream">
