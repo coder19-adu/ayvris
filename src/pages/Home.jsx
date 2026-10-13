@@ -68,7 +68,7 @@ export default function Home() {
     aria-label="AYVRIS"
     className="mt-0 flex w-full select-none items-center justify-center whitespace-nowrap font-['League_Spartan'] font-black leading-none tracking-[-0.04em] text-brand"
     style={{
-      fontSize: "clamp(8.8rem, 15vw, 12rem)",
+      fontSize: "clamp(8.1rem, 15vw, 12rem)",
       scale: logoScale,
       y: logoY,
       opacity: logoOpacity,
