@@ -125,7 +125,7 @@ export default function Home() {
               className="group relative mx-auto block w-full max-w-[240px] overflow-hidden rounded-[1.25rem] shadow-lg md:max-w-[280px] md:rounded-[1.5rem]"
             >
               <img
-                src="/products/nishi.jpeg"
+                src="/products/nish.jpeg"
                 alt="Shop dresses"
                 className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -202,12 +202,10 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:grid-cols-2 md:items-center">
           <div>
             <h2 className="font-display text-4xl font-extrabold leading-tight text-brand md:text-5xl">
-              Two colors, made to be worn together.
+              Dress like your saved pins!
             </h2>
             <p className="mt-5 max-w-lg text-lg leading-relaxed">
-              Every AYVRIS piece comes in blue or cream, so anything you own
-              goes with anything else. Fewer choices in the morning, better
-              clothes all year.
+                Ayvris is where your Pinterest daydreams meet your everyday wardrobe. Because your next favourite outfit deserves to leave the moodboard. Find pieces that make getting dressed the best part of your day.
             </p>
             <Link
               to="/about"
