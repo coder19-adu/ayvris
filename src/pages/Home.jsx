@@ -111,58 +111,99 @@ export default function Home() {
       </section>
 
       
-      {/* Categories */}
-      <section className="bg-cream">
-        <div className="mx-auto max-w-7xl px-5 py-16">
-          <div className="mb-8 flex items-end justify-between gap-4">
-            
-          </div>
+{/* Categories */}
+<section className="relative overflow-hidden bg-cream">
+  <div className="relative mx-auto max-w-7xl px-5 py-20 md:py-24">
 
-          <div className="mx-auto grid w-full max-w-2xl grid-cols-2 gap-4 md:gap-8">
-            {/* Dresses */}
-            <Link
-              to={`/catalog?category=${encodeURIComponent("Dresses")}`}
-              className="group relative mx-auto block w-full max-w-[240px] overflow-hidden rounded-[1.25rem] shadow-lg md:max-w-[280px] md:rounded-[1.5rem]"
-            >
-              <img
-                src="/products/nish.jpeg"
-                alt="Shop dresses"
-                className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-cream md:bottom-6 md:left-6">
-                <h3 className="font-display text-2xl font-bold md:text-4xl">
-                Dresses
-                </h3>
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-brand transition-transform duration-300 group-hover:translate-x-1 md:h-11 md:w-11">
-                  ↗
-                </span>
-              </div>
-            </Link>
+    {/* Sticker 1 — Chat sticker beside Dresses */}
+<img
+  src="/products/chat.png"
+  alt=""
+  aria-hidden="true"
+  className="pointer-events-none absolute -left-4 top-1 z-20
+    w-34 -rotate-12 object-contain
+    md:left-15 md:-top-10 md:w-70"
+/>
 
-            {/* Tops */}
-            <Link
-              to={`/catalog?category=${encodeURIComponent("Tops")}`}
-              className="group relative mx-auto block w-full max-w-[240px] overflow-hidden rounded-[1.25rem] shadow-lg md:max-w-[280px] md:rounded-[1.5rem]"
-            >
-              <img
-                src="/products/mirror.jpeg"
-                alt="Shop tops"
-                className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-cream md:bottom-6 md:left-6">
-                <h3 className="font-display text-2xl font-bold md:text-4xl">
-                  Tops
-                </h3>
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-brand transition-transform duration-300 group-hover:translate-x-1 md:h-11 md:w-11">
-                  ↗
-                </span>
-              </div>
-            </Link>
-          </div>
+    {/* Sticker 2 — Top right */}
+    <img
+      src="/products/red.png"
+      alt=""
+      aria-hidden="true"
+      className="pointer-events-none absolute -right-10 -top-1 z-20
+  w-35 rotate-45 object-contain
+  md:-right-15 md:top-0 md:w-75"
+    />
+
+    {/* Sticker 3 — Bottom left */}
+    <img
+      src="/products/blu.png"
+      alt=""
+      aria-hidden="true"
+      className="pointer-events-none absolute bottom-4 left-15 z-20
+        w-20 -rotate-25 object-contain
+        md:-bottom-1 md:right-15 md:w-50"
+    />
+
+    {/* Sticker 4 — Bottom right */}
+    <img
+      src="/products/ball.png"
+      alt=""
+      aria-hidden="true"
+      className="pointer-events-none absolute -bottom-4 right-15 z-20
+        w-35 rotate-12 object-contain
+        md:-bottom-5 md:right-15 md:w-65"
+    />
+
+    {/* Category cards */}
+    <div className="mx-auto grid w-full max-w-2xl grid-cols-2 gap-4 md:gap-8">
+
+      {/* Dresses */}
+      <Link
+        to={`/catalog?category=${encodeURIComponent("Dresses")}`}
+        className="group relative mx-auto block w-full max-w-[240px] overflow-hidden rounded-[1.25rem] shadow-lg md:max-w-[280px] md:rounded-[1.5rem]"
+      >
+        <img
+          src="/products/nish.jpeg"
+          alt="Shop dresses"
+          className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-cream md:bottom-6 md:left-6">
+          <h3 className="font-display text-2xl font-bold md:text-4xl">
+            Dresses
+          </h3>
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-brand transition-transform duration-300 group-hover:translate-x-1 md:h-11 md:w-11">
+            ↗
+          </span>
         </div>
-      </section>
+      </Link>
+
+      {/* Tops */}
+      <Link
+        to={`/catalog?category=${encodeURIComponent("Tops")}`}
+        className="group relative mx-auto block w-full max-w-[240px] overflow-hidden rounded-[1.25rem] shadow-lg md:max-w-[280px] md:rounded-[1.5rem]"
+      >
+        <img
+          src="/products/mirror.jpeg"
+          alt="Shop tops"
+          className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-cream md:bottom-6 md:left-6">
+          <h3 className="font-display text-2xl font-bold md:text-4xl">
+            Tops
+          </h3>
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-brand transition-transform duration-300 group-hover:translate-x-1 md:h-11 md:w-11">
+            ↗
+          </span>
+        </div>
+      </Link>
+
+    </div>
+  </div>
+</section>
+
 
 {/* AYVRIS moving fashion ticker */}
 <section
