@@ -175,12 +175,7 @@ export default function Catalog() {
 
         {/* Bottom note */}
         <div className="mt-16 border-t border-cream/30 py-8 text-center">
-          <p className="font-display text-xl font-bold md:text-2xl">
-            Find your kind of blue.
-          </p>
-          <p className="mt-2 text-xs tracking-widest text-cream/70">
-            AYVRIS · MADE TO BE WORN TOGETHER
-          </p>
+          
         </div>
 
       </div>

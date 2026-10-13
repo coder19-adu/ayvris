@@ -275,7 +275,7 @@ export default function Home() {
       {/* Story */}
       <section className="bg-cream">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:grid-cols-2 md:items-center">
-          <div>
+  <div className="flex flex-col items-center text-center md:col-span-2">
             <h2 className="font-display text-4xl font-extrabold leading-tight text-brand md:text-5xl">
               Dress like your saved pins!
             </h2>

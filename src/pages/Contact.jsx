@@ -16,7 +16,8 @@ export default function Contact() {
   };
 
   return (
-    <div className="mx-auto grid max-w-7xl gap-12 px-5 py-12 md:grid-cols-12 md:py-20">
+    <div className="min-h-screen w-full bg-cream">
+  <div className="mx-auto grid max-w-7xl gap-12 px-5 py-12 md:grid-cols-12 md:py-20">
       <div className="md:col-span-5">
         <h1 className="font-display text-5xl font-extrabold text-brand md:text-7xl">
           Contact
@@ -108,6 +109,7 @@ export default function Contact() {
           </form>
         )}
       </div>
+    </div>
     </div>
   );
 }

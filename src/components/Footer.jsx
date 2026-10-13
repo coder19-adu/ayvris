@@ -7,7 +7,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="on-blue bg-brand text-cream">
+    <footer className="on-blue footer-polka bg-brand text-cream">
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-5 py-12 sm:grid-cols-2 md:grid-cols-3 md:gap-8 md:px-8 md:py-14">
 
         {/* Links */}
