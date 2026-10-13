@@ -38,10 +38,10 @@ export default function About() {
 
 {/* Sticker 1 - left page, upper area */}
 <img
-  src="/products/love.png"
+  src="/products/heart.png"
   alt=""
-  className="pointer-events-none absolute -left-[2%] top-[45%] z-20 w-20 rotate-[12deg] object-contain 
-  md:-left-[4%] md:top-[14%] md:w-65"
+  className="pointer-events-none absolute -left-[1%] top-[47%] z-20 w-15 rotate-[12deg] object-contain 
+  md:-left-[4%] md:top-[14%] md:w-50"
 />
 
 {/* Sticker 2 - left page, lower area */}

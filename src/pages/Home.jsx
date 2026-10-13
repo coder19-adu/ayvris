@@ -3,7 +3,7 @@ import { categories, products } from "../data/products";
 import ProductCard from "../components/ProductCard";
 import ProductImage from "../components/ProductImage";
 import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "../lib/config";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   motion,
   useScroll,
@@ -15,6 +15,7 @@ const LETTERS = "AYVRIS".split("");
 
 export default function Home() {
   const newIn = products.filter((p) => p.isNew).slice(0, 4);
+  const [basketTouched, setBasketTouched] = useState(false);
 
   // Hero wordmark scroll animation
   const heroRef = useRef(null);
@@ -89,28 +90,61 @@ export default function Home() {
 </div>
 </section>
 
-      {/* New in */}
-      <section className="mx-auto max-w-7xl px-5 py-16">
-        <div className="flex items-end justify-between gap-4">
-          <h2 className="font-display text-3xl font-bold md:text-4xl">
-            New in
-          </h2>
-          <Link
-            to="/catalog"
-            className="font-semibold text-brand underline underline-offset-4"
-          >
-            View all products
-          </Link>
-        </div>
+{/* Seamless moving polka dot tape */}
+<div
+  aria-hidden="true"
+  className="polka-tape relative z-20 w-full overflow-hidden
+    border-y border-brand/15"
+>
+  <div className="polka-tape-track h-7 w-full md:h-9" />
+</div>
 
-        <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-10 lg:grid-cols-4">
-          {newIn.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
-        </div>
-      </section>
 
-      
+{/* Full-screen interactive shopping section */}
+<section className="relative isolate z-10 -mb-8 flex min-h-[100svh] w-full items-center justify-center overflow-visible bg-cream pb-8">
+
+  <img
+  src="/products/3.png"
+  alt=""
+  aria-hidden="true"
+  className="absolute inset-0 -z-10 h-full w-full
+    object-cover object-center"
+/>
+
+{/* Clickable basket and package */}
+<Link
+  to="/catalog"
+  aria-label="Shop the AYVRIS collection"
+  onTouchStart={() => setBasketTouched(true)}
+  onTouchEnd={() => setBasketTouched(false)}
+  className="group relative block aspect-square
+    w-[90vw] max-w-[600px] md:w-[65vw] md:max-w-[760px]"
+>
+  {/* Basket */}
+  <img
+    src="/products/basket.png"
+    alt=""
+    aria-hidden="true"
+    className={`absolute inset-0 z-10 h-full w-full
+      object-contain transition-transform duration-300 ease-out
+      group-hover:-translate-y-2 group-hover:scale-[1.03]
+      ${basketTouched ? "-translate-y-2 scale-[1.03]" : ""}`}
+  />
+
+  {/* Package inside the basket */}
+  <img
+    src="/products/package.png"
+    alt="AYVRIS shopping basket with package"
+    className={`absolute left-1/2 top-[8%] z-20
+      w-[58%] -translate-x-1/2 rotate-[-7deg]
+      object-contain transition-transform duration-300 ease-out
+      group-hover:-translate-y-3 group-hover:rotate-[-3deg]
+      ${basketTouched ? "-translate-y-3 rotate-[-3deg]" : ""}`}
+  />
+</Link>
+
+</section>
+
 {/* Categories */}
 <section className="relative overflow-hidden bg-cream">
   <div className="relative mx-auto max-w-7xl px-5 py-20 md:py-24">

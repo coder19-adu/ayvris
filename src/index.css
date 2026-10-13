@@ -72,3 +72,48 @@
     animation: none;
   }
 }
+
+@keyframes ayvris-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ayvris-marquee {
+  animation: ayvris-marquee 20s linear infinite;
+}
+
+
+.polka-tape {
+  background-color: #f3e8bf;
+}
+
+.polka-tape-track {
+  background-image: radial-gradient(
+    circle,
+    #0047ab 2.5px,
+    transparent 2.8px
+  );
+  background-size: 24px 24px;
+  background-position: 0 50%;
+  background-repeat: repeat;
+  animation: polka-tape-move 3s linear infinite;
+}
+
+@keyframes polka-tape-move {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .polka-tape-track {
+    animation: none;
+  }
+}
