@@ -63,31 +63,31 @@ export default function Home() {
 </div>
 
 <div className="relative z-10 mx-auto w-full max-w-7xl px-3 pb-16 pt-24 md:px-5 md:pb-10">
-          {/* Responsive AYVRIS wordmark */}
-          <motion.h1
-            aria-label="AYVRIS"
-            className="mt-0 flex w-full select-none items-center justify-center whitespace-nowrap font-display font-black leading-none tracking-[-0,03em] text-brand"
-            style={{
-              fontSize: "clamp(7.8rem, 16vw, 12rem)",
-              scale: logoScale,
-              y: logoY,
-              opacity: logoOpacity,
-              transformOrigin: "center bottom",
-            }}
-          >
-            {LETTERS.map((l, i) => (
-              <span
-                key={i}
-                aria-hidden="true"
-                className="rise inline-block"
-                style={{ "--i": i }}
-              >
-                {l}
-              </span>
-            ))}
-          </motion.h1>
-        </div>
-      </section>
+  {/* Responsive AYVRIS wordmark */}
+  <motion.h1
+    aria-label="AYVRIS"
+    className="mt-0 flex w-full select-none items-center justify-center whitespace-nowrap font-['League_Spartan'] font-black leading-none tracking-[-0.04em] text-brand"
+    style={{
+      fontSize: "clamp(8.8rem, 15vw, 12rem)",
+      scale: logoScale,
+      y: logoY,
+      opacity: logoOpacity,
+      transformOrigin: "center bottom",
+    }}
+  >
+    {LETTERS.map((l, i) => (
+      <span
+        key={i}
+        aria-hidden="true"
+        className="rise inline-block"
+        style={{ "--i": i }}
+      >
+        {l}
+      </span>
+    ))}
+  </motion.h1>
+</div>
+</section>
 
       {/* New in */}
       <section className="mx-auto max-w-7xl px-5 py-16">
