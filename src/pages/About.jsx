@@ -69,7 +69,7 @@ export default function About() {
 />
 
           {/* Mirror image layered above diary */}
-          <div className="absolute left-[26%] top-[24%] z-20 w-[40%] rotate-3 md:left-[25%] md:top-[10%] md:w-[30%]">
+          <div className="absolute left-[25%] top-[24%] z-20 w-[40%] rotate-3 md:left-[25%] md:top-[10%] md:w-[30%]">
             <div className="overflow-hidden border-[6px] border-cream bg-cream shadow-xl md:border-8">
               <img
                 src="/products/mirror.jpeg"
