@@ -34,7 +34,6 @@ export default function Footer() {
           </ul>
         </nav>
 
-
         {/* Policies */}
         <nav aria-label="Policies" className="min-w-0">
           <h2 className="mb-4 font-display text-xl font-bold">

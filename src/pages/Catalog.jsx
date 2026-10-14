@@ -1,7 +1,7 @@
-import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { categories, products } from "../data/products";
 import ProductCard from "../components/ProductCard";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const SORTS = {
   featured: { label: "Featured", fn: () => 0 },
@@ -37,37 +37,52 @@ export default function Catalog() {
     setParams(category === "All" ? {} : { category });
   };
 
+const [hideStickers, setHideStickers] = useState(false);
+const footerRef = useRef(null);
+
+useEffect(() => {
+  const footer = document.querySelector("footer");
+  if (!footer) return;
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      setHideStickers(entry.isIntersecting);
+    },
+    { threshold: 0 }
+  );
+
+  observer.observe(footer);
+
+  return () => observer.disconnect();
+}, []);
+
   return (
     <main className="relative isolate min-h-screen bg-brand text-cream">
 
       {/* Fixed stickers behind the catalogue */}
       <div
-        className="pointer-events-none fixed inset-0 z-[-1] overflow-hidden"
-        aria-hidden="true"
-      >
+  className="pointer-events-none fixed -inset-0 z-0 overflow-hidden"
+  aria-hidden="true"
+>
+  
         <img
           src="/products/button.png"
           alt=""
-          className="absolute right-[5%] top-[18%] w-10 rotate-12 opacity-90 md:w-16"
+          className="absolute right-[5%] top-[18%] w-10 rotate-12 opacity-90 md:w-19"
         />
 
         <img
           src="/products/stars.png"
           alt=""
-          className="absolute left-[2%] top-[42%] w-12 -rotate-12 opacity-90 md:left-[4%] md:w-20"
+          className="absolute left-[2%] top-[24%] w-15 -rotate-12 opacity-90 md:left-[4%] md:w-33"
         />
 
         <img
           src="/products/bug.png"
           alt=""
-          className="absolute right-[3%] top-[65%] w-20 rotate-12 opacity-90 md:right-[5%] md:w-23"
+          className="absolute right-[3%] top-[65%] w-20 rotate-12 opacity-90 md:right-[4%] md:w-23"
         />
 
-        <img
-          src="/products/flower.png"
-          alt=""
-          className="absolute bottom-[8%] left-[8%] w-8 -rotate-6 opacity-90 md:w-15"
-        />
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1600px] px-4 py-10 md:px-8 md:py-16 lg:px-12">

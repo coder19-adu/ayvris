@@ -124,13 +124,13 @@
   background-image:
     radial-gradient(
       circle,
-      rgb(243 232 191 / 40%) 3px,
-      transparent 3.5px
+      rgb(127 168 232 / 55%) 2px,
+      transparent 2.5px
     ),
     radial-gradient(
       circle,
-      rgb(243 232 191 / 40%) 3px,
-      transparent 3.5px
+      rgb(127 168 232 / 55%) 2px,
+      transparent 2.5px
     );
   background-size: 32px 32px;
   background-position: 0 0, 16px 16px;

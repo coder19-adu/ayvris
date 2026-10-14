@@ -101,47 +101,79 @@ export default function Home() {
 
 
 {/* Full-screen interactive shopping section */}
-<section className="relative isolate z-10 -mb-8 flex min-h-[100svh] w-full items-center justify-center overflow-visible bg-cream pb-8">
+<section className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden bg-cream px-5 py-8 md:grid md:grid-cols-[1fr_1.5fr_1fr] md:gap-8 md:px-10">
 
+  {/* Background */}
   <img
-  src="/products/3.png"
-  alt=""
-  aria-hidden="true"
-  className="absolute inset-0 -z-10 h-full w-full
-    object-cover object-center"
-/>
-
-{/* Clickable basket and package */}
-<Link
-  to="/catalog"
-  aria-label="Shop the AYVRIS collection"
-  onTouchStart={() => setBasketTouched(true)}
-  onTouchEnd={() => setBasketTouched(false)}
-  className="group relative block aspect-square
-    w-[90vw] max-w-[600px] md:w-[65vw] md:max-w-[760px]"
->
-  {/* Basket */}
-  <img
-    src="/products/basket.png"
+    src="/products/3.png"
     alt=""
     aria-hidden="true"
-    className={`absolute inset-0 z-10 h-full w-full
-      object-contain transition-transform duration-300 ease-out
-      group-hover:-translate-y-2 group-hover:scale-[1.03]
-      ${basketTouched ? "-translate-y-2 scale-[1.03]" : ""}`}
+    className="absolute inset-0 h-full w-full object-cover object-center"
   />
 
-  {/* Package inside the basket */}
-  <img
-    src="/products/package.png"
-    alt="AYVRIS shopping basket with package"
-    className={`absolute left-1/2 top-[8%] z-20
-      w-[58%] -translate-x-1/2 rotate-[-7deg]
-      object-contain transition-transform duration-300 ease-out
-      group-hover:-translate-y-3 group-hover:rotate-[-3deg]
-      ${basketTouched ? "-translate-y-3 rotate-[-3deg]" : ""}`}
-  />
-</Link>
+  {/* Mobile heading — above basket */}
+  <div className="relative z-10 mb-2 max-w-sm text-center md:hidden -translate-y-6">
+    <h2 className="font-display text-3xl font-black leading-tight text-cream">
+      A little bit of everything you
+      love.
+    </h2>
+  </div>
+
+  {/* Desktop heading — left of basket */}
+  <div className="hidden -translate-y-6 md:block">
+    <h2 className="font-display text-4xl font-black leading-tight text-cream lg:text-5xl">
+      A little bit of everything you
+      <br />
+      love.
+    </h2>
+  </div>
+
+  {/* Basket and package — images remain inside the clickable link */}
+  <Link
+    to="/catalog"
+    aria-label="Shop the AYVRIS collection"
+    onTouchStart={() => setBasketTouched(true)}
+    onTouchEnd={() => setBasketTouched(false)}
+    className="group relative z-10 block aspect-square w-[90vw] max-w-[600px] md:w-full md:max-w-[760px]"
+  >
+    <img
+      src="/products/basket.png"
+      alt=""
+      aria-hidden="true"
+      className={`absolute inset-0 z-10 h-full w-full object-contain transition-transform duration-300 ease-out group-hover:-translate-y-2 group-hover:scale-[1.03] ${
+        basketTouched ? "-translate-y-2 scale-[1.03]" : ""
+      }`}
+    />
+
+    <img
+      src="/products/package.png"
+      alt="AYVRIS shopping basket with package"
+      className={`absolute left-1/2 top-[8%] z-20 w-[58%] -translate-x-1/2 rotate-[-7deg] object-contain transition-transform duration-300 ease-out group-hover:-translate-y-3 group-hover:rotate-[-3deg] ${
+        basketTouched ? "-translate-y-3 rotate-[-3deg]" : ""
+      }`}
+    />
+  </Link>
+
+  {/* Mobile subtext — below basket */}
+  <div className="relative z-10 mt-2 max-w-sm text-center md:hidden">
+    <h2 className="font-display text-3xl font-black leading-tight text-cream">
+      Things you didn't know you needed.
+    </h2>
+    <p className="text-sm leading-relaxed text-cream"> <br />
+      Trendy clothes, cute accessories & thoughtfully curated hampers. Find something for your next outfit, your favourite person, or simply because you deserve it.
+    </p>
+  </div>
+
+  {/* Desktop subtext — right of basket */}
+  <div className="hidden max-w-xs -translate-y-6 md:block">
+    <h2 className="font-display text-2xl font-bold leading-snug text-cream lg:text-3xl">
+      Things you didn't know you needed.
+    </h2>
+    <p className="mt-4 text-sm leading-relaxed text-cream/80 lg:text-base">
+      Trendy clothes, cute accessories & thoughtfully curated hampers. Find something for your next outfit, your favourite person, or simply because you deserve it.
+    </p>
+    
+  </div>
 
 </section>
 
