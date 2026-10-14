@@ -30,46 +30,12 @@ export default function About() {
             src="/products/diary.png"
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute -left-45 top-3/10 z-10 w-[115%] max-w-none -translate-y-2/6 -rotate-6 object-contain
+            className="pointer-events-none absolute -left-50 top-3/10 z-10 w-[145%] max-w-none -translate-y-2/4 -rotate-12 object-contain
             md:-left-85 md:w-[90%]"
           />
 
-          {/* Diary stickers */}
-
-{/* Sticker 1 - left page, upper area */}
-<img
-  src="/products/heart.png"
-  alt=""
-  className="pointer-events-none absolute -left-[1%] top-[47%] z-20 w-15 rotate-[12deg] object-contain 
-  md:-left-[4%] md:top-[14%] md:w-50"
-/>
-
-{/* Sticker 2 - left page, lower area */}
-<img
-  src="/products/swag.png"
-  alt=""
-  className="pointer-events-none absolute -left-[2%] top-[30%] z-20 w-16 rotate-[-100deg] object-contain 
-  md:-left-[7%] md:top-[54%] md:w-65"
-/>
-
-{/* Sticker 3 - right page, bottom */}
-<img
-  src="/products/26.png"
-  alt=""
-  className="pointer-events-none absolute right-[43%] top-[47%] z-20 w-20 rotate-[-8deg] object-contain 
-  md:left-[35%] md:top-[67%] md:w-58"
-/>
-
-{/* Sticker 4 - right page, upper area */}
-<img
-  src="/products/what.png"
-  alt=""
-  className="pointer-events-none absolute right-[40%] top-[20%] z-20 w-30 rotate-[4deg] object-contain
-  md:left-[30%] md:top-[1%] md:w-70"
-/>
-
-          {/* Mirror image layered above diary */}
-          <div className="absolute left-[25%] top-[24%] z-20 w-[40%] rotate-3 md:left-[25%] md:top-[10%] md:w-[30%]">
+          {/* Mirror image layered above diary 
+          <div className="absolute left-[25%] top-[19%] z-20 w-[35%] -rotate-6 md:left-[25%] md:top-[10%] md:w-[30%]">
             <div className="overflow-hidden border-[6px] border-cream bg-cream shadow-xl md:border-8">
               <img
                 src="/products/mirror.jpeg"
@@ -77,7 +43,7 @@ export default function About() {
                 className="aspect-[4/5] w-full object-cover"
               />
             </div>
-          </div>
+          </div> */}
 
           {/* Brand story */}
           <div className="relative z-30 ml-auto mt-[500px] max-w-md rounded-2xl border-2 border-brand bg-cream/95 p-5 shadow-lg

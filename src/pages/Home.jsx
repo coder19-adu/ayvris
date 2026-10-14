@@ -69,7 +69,7 @@ export default function Home() {
     aria-label="AYVRIS"
     className="mt-0 flex w-full select-none items-center justify-center whitespace-nowrap font-['League_Spartan'] font-black leading-none tracking-[-0.04em] text-brand"
     style={{
-      fontSize: "clamp(8.1rem, 15vw, 12rem)",
+      fontSize: "clamp(6.7rem, 15vw, 12rem)",
       scale: logoScale,
       y: logoY,
       opacity: logoOpacity,
@@ -112,7 +112,7 @@ export default function Home() {
   />
 
   {/* Mobile heading — above basket */}
-  <div className="relative z-10 mb-2 max-w-sm text-center md:hidden -translate-y-6">
+  <div className="relative z-10 mb-2 max-w-sm text-center md:hidden translate-y-3">
     <h2 className="font-display text-3xl font-black leading-tight text-cream">
       A little bit of everything you
       love.
@@ -136,33 +136,37 @@ export default function Home() {
     onTouchEnd={() => setBasketTouched(false)}
     className="group relative z-10 block aspect-square w-[90vw] max-w-[600px] md:w-full md:max-w-[760px]"
   >
-    <img
+     <img
       src="/products/basket.png"
       alt=""
       aria-hidden="true"
-      className={`absolute inset-0 z-10 h-full w-full object-contain transition-transform duration-300 ease-out group-hover:-translate-y-2 group-hover:scale-[1.03] ${
+      className={`absolute -inset-0 z-10 -mt-5 h-full w-full object-contain transition-transform duration-300 ease-out group-hover:-translate-y-2 group-hover:scale-[1.03] ${
         basketTouched ? "-translate-y-2 scale-[1.03]" : ""
       }`}
     />
 
-    <img
-      src="/products/package.png"
-      alt="AYVRIS shopping basket with package"
-      className={`absolute left-1/2 top-[8%] z-20 w-[58%] -translate-x-1/2 rotate-[-7deg] object-contain transition-transform duration-300 ease-out group-hover:-translate-y-3 group-hover:rotate-[-3deg] ${
-        basketTouched ? "-translate-y-3 rotate-[-3deg]" : ""
-      }`}
-    />
+<img
+  src="/products/package.png"
+  alt="AYVRIS shopping basket with package"
+  className={`absolute left-1/2 top-[4%] z-20 w-[58%] -translate-x-1/2 rotate-[-7deg] object-contain transition-transform duration-300 ease-out group-hover:-translate-y-3 group-hover:rotate-[-3deg] ${
+    basketTouched ? "-translate-y-3 rotate-[-3deg]" : ""
+  }`}
+/>
+
   </Link>
 
   {/* Mobile subtext — below basket */}
-  <div className="relative z-10 mt-2 max-w-sm text-center md:hidden">
-    <h2 className="font-display text-3xl font-black leading-tight text-cream">
-      Things you didn't know you needed.
-    </h2>
-    <p className="text-sm leading-relaxed text-cream"> <br />
-      Trendy clothes, cute accessories & thoughtfully curated hampers. Find something for your next outfit, your favourite person, or simply because you deserve it.
-    </p>
-  </div>
+<div className="relative z-10 -mt-12 w-full max-w-xs px-2 text-center md:hidden">
+  <h2 className="font-display text-2xl font-black leading-tight text-cream">
+    Things you didn't know you needed.
+  </h2>
+
+  <p className="mt-3 text-sm leading-relaxed text-cream">
+    Trendy clothes, cute accessories & thoughtfully curated hampers.
+    Find something for your next outfit, your favourite person, or
+    simply because you deserve it.
+  </p>
+</div>
 
   {/* Desktop subtext — right of basket */}
   <div className="hidden max-w-xs -translate-y-6 md:block">
