@@ -17,6 +17,11 @@ export default function Footer() {
           </h2>
           <ul className="space-y-3 font-medium">
             <li>
+              <Link to="/home" className="transition-opacity hover:opacity-75">
+                Home
+              </Link>
+            </li>
+            <li>
               <Link to="/catalog" className="transition-opacity hover:opacity-75">
                 Catalog
               </Link>

@@ -308,7 +308,7 @@ export default function Home() {
   </div>
 </section> 
 
-      {/* Story */}
+      {/* Story 
       <section className="bg-cream">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:grid-cols-2 md:items-center">
   <div className="flex flex-col items-center text-center md:col-span-2">
@@ -326,25 +326,61 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              products.find((p) => p.id === "cap-blue"),
-              products.find((p) => p.id === "tote-cream"),
-            ]
-              .filter(Boolean)
-              .map((p) => (
-                <div key={p.id} className="aspect-square bg-card p-8">
-                  <ProductImage
-                    type={p.type}
-                    image={p.image}
-                    color={p.color}
-                    label={p.name}
-                  />
-                </div>
-              ))}
-          </div>
+        */}
+        
+{/* AYVRIS — Pinterest-style customer gallery */}
+<section className="relative mx-auto w-full min-w-0 overflow-hidden bg-cream px-2 py-8 sm:px-3 md:px-6 md:py-14 lg:px-8 lg:py-16">
+
+  {/* Heading */}
+  <div className="mx-auto mb-7 max-w-5xl px-2 text-center md:mb-10 lg:mb-12">
+
+    <h2 className="font-display text-3xl font-black leading-tight text-brand sm:text-4xl md:text-5xl lg:text-6xl">
+      Baddies Approved!
+    </h2>
+  </div>
+
+  {/* Centered Pinterest-style image feed */}
+  <div className="mx-auto w-full max-w-[1800px] columns-2 gap-2 sm:columns-3 sm:gap-3 md:columns-4 md:gap-4 xl:columns-5 xl:gap-5">
+
+    {[
+      "/reviews/r1.jpeg",
+      "/reviews/r3.jpeg",
+      "/reviews/r4.jpeg",
+      "/reviews/r5.jpeg",
+      "/reviews/r6.jpeg",
+      "/reviews/r9.jpeg",
+      "/reviews/r7.jpeg",
+      "/reviews/r8.jpeg",
+      "/reviews/r2.jpeg",
+      
+    ].map((image, index) => (
+      <div
+        key={image}
+        className="mb-2 break-inside-avoid sm:mb-3 md:mb-4"
+      >
+        <div className="relative overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl">
+          <img
+            src={image}
+            alt={`AYVRIS customer photo ${index + 1}`}
+            loading="lazy"
+            className="block h-auto w-full object-cover"
+          />
         </div>
-      </section>
+      </div>
+    ))}
+
+  </div>
+
+  <div className="py-8 text-center md:py-12 lg:py-14">
+    <p className="font-display text-xl font-bold text-brand sm:text-2xl md:text-3xl">
+      Be part of the board!!!!
+    </p>
+  </div>
+
+</section>
+
+       {/*  </div>
+      </section> story ka closing tag */} 
     </>
   );
 }
