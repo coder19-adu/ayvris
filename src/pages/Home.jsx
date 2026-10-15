@@ -45,10 +45,13 @@ export default function Home() {
       >
         {/* Full-screen hero image */}
         <img
-          src="/products/bhavya1.jpeg"
-          alt="AYVRIS collection"
-          className="absolute inset-0 h-full w-full object-cover object-center"
-        />
+  src="/products/bhavya1.jpeg"
+  alt="AYVRIS collection"
+  loading="eager"
+  fetchPriority="high"
+  decoding="async"
+  className="absolute inset-0 h-full w-full object-cover object-center"
+/>
 
         {/* Overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/15 to-transparent" />
@@ -101,26 +104,28 @@ export default function Home() {
 
 
 {/* Full-screen interactive shopping section */}
+
+
+
 <section className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden bg-cream px-5 py-8 md:grid md:grid-cols-[1fr_1.5fr_1fr] md:gap-8 md:px-10">
 
   {/* Background */}
   <img
-    src="/products/3.png"
+    src="/products/33.png"
     alt=""
     aria-hidden="true"
     className="absolute inset-0 h-full w-full object-cover object-center"
   />
 
-  {/* Mobile heading — above basket */}
-  <div className="relative z-10 mb-2 max-w-sm text-center md:hidden translate-y-3">
-    <h2 className="font-display text-3xl font-black leading-tight text-cream">
-      A little bit of everything you
-      love.
-    </h2>
-  </div>
+  {/* Mobile heading — responsive spacing */}
+<div className="relative z-10 mb-3 mt-2 w-full max-w-sm px-2 text-center md:hidden">
+  <h2 className="font-display text-[clamp(1.65rem,6vw,2.25rem)] font-black leading-tight text-cream">
+    A little bit of everything you love.
+  </h2>
+</div>
 
   {/* Desktop heading — left of basket */}
-  <div className="hidden -translate-y-6 md:block">
+  <div className="hidden -translate-y-5 md:block">
     <h2 className="font-display text-4xl font-black leading-tight text-cream lg:text-5xl">
       A little bit of everything you
       <br />
@@ -128,53 +133,57 @@ export default function Home() {
     </h2>
   </div>
 
-  {/* Basket and package — images remain inside the clickable link */}
-  <Link
-    to="/catalog"
-    aria-label="Shop the AYVRIS collection"
-    onTouchStart={() => setBasketTouched(true)}
-    onTouchEnd={() => setBasketTouched(false)}
-    className="group relative z-10 block aspect-square w-[90vw] max-w-[600px] md:w-full md:max-w-[760px]"
-  >
-     <img
-      src="/products/basket.png"
-      alt=""
-      aria-hidden="true"
-      className={`absolute -inset-0 z-10 -mt-5 h-full w-full object-contain transition-transform duration-300 ease-out group-hover:-translate-y-2 group-hover:scale-[1.03] ${
-        basketTouched ? "-translate-y-2 scale-[1.03]" : ""
-      }`}
-    />
+  {/* Basket and package */}
+<Link
+  to="/catalog"
+  aria-label="Shop the AYVRIS collection"
+  onTouchStart={() => setBasketTouched(true)}
+  onTouchEnd={() => setBasketTouched(false)}
+  className="group relative z-10 block aspect-square w-[90vw] max-w-[600px] md:w-full md:max-w-[760px]"
+>
+  <img
+    src="/products/basket.png"
+    alt=""
+    aria-hidden="true"
+    className={`absolute -inset-0 z-10 -mt-5 h-full w-full object-contain transition-transform duration-300 ease-out group-hover:-translate-y-2 group-hover:scale-[1.03] ${
+      basketTouched ? "-translate-y-2 scale-[1.03]" : ""
+    }`}
+  />
 
-<img
-  src="/products/package.png"
-  alt="AYVRIS shopping basket with package"
-  className={`absolute left-1/2 top-[4%] z-20 w-[58%] -translate-x-1/2 rotate-[-7deg] object-contain transition-transform duration-300 ease-out group-hover:-translate-y-3 group-hover:rotate-[-3deg] ${
-    basketTouched ? "-translate-y-3 rotate-[-3deg]" : ""
-  }`}
-/>
+  <img
+    src="/products/package.png"
+    alt=""
+    className={`absolute left-1/2 top-[4%] z-20 w-[58%] -translate-x-1/2 rotate-[-7deg] object-contain transition-transform duration-300 ease-out group-hover:-translate-y-3 group-hover:rotate-[-3deg] ${
+      basketTouched ? "-translate-y-3 rotate-[-3deg]" : ""
+    }`}
+  />
 
-  </Link>
+  {/* Click hint — centered below basket */}
+  <span className="absolute bottom-[90%] left-1/2 z-30 w-full -translate-x-1/2 text-center text-[10px] text-cream sm:text-xs">
+    (open your package, cutie!!!)
+  </span>
+</Link>
 
   {/* Mobile subtext — below basket */}
-<div className="relative z-10 -mt-12 w-full max-w-xs px-2 text-center md:hidden">
+<div className="relative z-10 -mt-20 w-full max-w-xs px-2 text-center md:hidden">
   <h2 className="font-display text-2xl font-black leading-tight text-cream">
-    Things you didn't know you needed.
+    Things you didn't know you needed
   </h2>
 
   <p className="mt-3 text-sm leading-relaxed text-cream">
     Trendy clothes, cute accessories & thoughtfully curated hampers.
     Find something for your next outfit, your favourite person, or
-    simply because you deserve it.
+    simply because you deserve it!
   </p>
 </div>
 
   {/* Desktop subtext — right of basket */}
-  <div className="hidden max-w-xs -translate-y-6 md:block">
+  <div className="hidden max-w-xs -translate-y-6 md:block text-center">
     <h2 className="font-display text-2xl font-bold leading-snug text-cream lg:text-3xl">
-      Things you didn't know you needed.
+      Things you didn't know you needed
     </h2>
     <p className="mt-4 text-sm leading-relaxed text-cream/80 lg:text-base">
-      Trendy clothes, cute accessories & thoughtfully curated hampers. Find something for your next outfit, your favourite person, or simply because you deserve it.
+      Trendy clothes, cute accessories & thoughtfully curated hampers. Find something for your next outfit, your favourite person, or simply because you deserve it
     </p>
     
   </div>
@@ -221,7 +230,7 @@ export default function Home() {
       alt=""
       aria-hidden="true"
       className="pointer-events-none absolute -bottom-4 right-15 z-20
-        w-35 rotate-12 object-contain
+        w-30 rotate-12 object-contain
         md:-bottom-5 md:right-15 md:w-65"
     />
 
@@ -343,15 +352,15 @@ export default function Home() {
   <div className="mx-auto w-full max-w-[1800px] columns-2 gap-2 sm:columns-3 sm:gap-3 md:columns-4 md:gap-4 xl:columns-5 xl:gap-5">
 
     {[
-      "/reviews/r1.jpeg",
-      "/reviews/r3.jpeg",
-      "/reviews/r4.jpeg",
-      "/reviews/r5.jpeg",
-      "/reviews/r6.jpeg",
-      "/reviews/r9.jpeg",
-      "/reviews/r7.jpeg",
-      "/reviews/r8.jpeg",
-      "/reviews/r2.jpeg",
+      "/reviews/r1.webp",
+      "/reviews/r3.webp",
+      "/reviews/r4.webp",
+      "/reviews/r5.webp",
+      "/reviews/r6.webp",
+      "/reviews/r9.webp",
+      "/reviews/r7.webp",
+      "/reviews/r8.webp",
+      "/reviews/r2.webp",
       
     ].map((image, index) => (
       <div
